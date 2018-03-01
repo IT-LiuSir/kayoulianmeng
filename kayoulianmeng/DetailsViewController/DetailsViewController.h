@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailsViewController : UIViewController
-@property(nonatomic,strong) NSString *urlString;
+@property(nonatomic,strong) NSString *webURL;
+@property(nonatomic,strong) NSString *type;
+@property(nonatomic,strong) NSString *videoURL;
 @end

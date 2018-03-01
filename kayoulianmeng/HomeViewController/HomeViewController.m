@@ -209,7 +209,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
     }else{
         rowHeight = Screen_Width*0.147+20;
     }
-    NSLog(@"这里是行高");
+//    NSLog(@"这里是行高");
     
     return rowHeight;
 }
@@ -219,6 +219,11 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
     NSLog(@"table被选中%zd",indexPath.row);
     self.detailsViewCtr = [[DetailsViewController alloc] init];
     self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
+    self.detailsViewCtr.type = [[_tableDictionary objectForKey:@"data"][indexPath.row] objectForKey:@"type"];
+    if ([self.detailsViewCtr.type isEqualToString:@"video"]) {
+        self.detailsViewCtr.videoURL = [[_tableDictionary objectForKey:@"data"][indexPath.row] objectForKey:@"videourl"];
+    }
+    
     [self.navigationController pushViewController:_detailsViewCtr animated:YES];
 }
 
@@ -528,7 +533,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
             self.detailsViewCtr = [[DetailsViewController alloc] init];
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"附近商家";
-            self.detailsViewCtr.urlString =@"https://nearby-api.360che.com";
+            self.detailsViewCtr.webURL =@"https://nearby-api.360che.com";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }
@@ -545,7 +550,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
             self.detailsViewCtr = [[DetailsViewController alloc] init];
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"配件商城";
-            self.detailsViewCtr.urlString = @"https://s.360che.com/Wapshop";
+            self.detailsViewCtr.webURL = @"https://s.360che.com/Wapshop";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
 
             break;
@@ -555,7 +560,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
             self.detailsViewCtr = [[DetailsViewController alloc] init];
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"买挂车";
-            self.detailsViewCtr.urlString = @"https://gche.360che.com/market/sale/list.aspx";
+            self.detailsViewCtr.webURL = @"https://gche.360che.com/market/sale/list.aspx";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
 
             break;
@@ -565,7 +570,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
             self.detailsViewCtr = [[DetailsViewController alloc] init];
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"快运贷";
-            self.detailsViewCtr.urlString = @"";
+            self.detailsViewCtr.webURL = @"";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }
@@ -574,7 +579,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
             self.detailsViewCtr = [[DetailsViewController alloc] init];
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"二手车";
-            self.detailsViewCtr.urlString = @"https://tao.m.360che.com";
+            self.detailsViewCtr.webURL = @"https://tao.m.360che.com";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }

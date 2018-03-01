@@ -6,6 +6,7 @@ target 'kayoulianmeng' do
     pod 'JSONKit-iOS6Later', '~> 2.0.1'
 	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'MJRefresh', '~> 3.1.15.1'
+    pod 'CLPlayer', '~> 1.2.0'
     pod 'Hyphenate'
     pod 'BmobSDK'
 end
