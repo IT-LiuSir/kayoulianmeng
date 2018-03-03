@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		896D44B46927B2439551699E /* libPods-kayoulianmeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7293C5F4148E8A7D42DCC /* libPods-kayoulianmeng.a */; };
+		AB4EC108204A86FE0009FC27 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4EC107204A86FE0009FC27 /* MapViewController.m */; };
 		AB64FDE8202FA1400077FF3E /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AB64FDE7202FA1400077FF3E /* background.png */; };
 		AB64FDF1203023310077FF3E /* LY_WaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB64FDF0203023310077FF3E /* LY_WaveView.m */; };
 		AB9698202004285900594F81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96981F2004285900594F81 /* AppDelegate.m */; };
@@ -267,6 +268,8 @@
 		59CEC93BF551CDA2563E4C4A /* Pods-kayoulianmeng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kayoulianmeng.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kayoulianmeng/Pods-kayoulianmeng.debug.xcconfig"; sourceTree = "<group>"; };
 		86A7293C5F4148E8A7D42DCC /* libPods-kayoulianmeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kayoulianmeng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6580D02D25411B006B76091 /* Pods-kayoulianmeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kayoulianmeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-kayoulianmeng/Pods-kayoulianmeng.release.xcconfig"; sourceTree = "<group>"; };
+		AB4EC106204A86FE0009FC27 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		AB4EC107204A86FE0009FC27 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		AB64FDE7202FA1400077FF3E /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		AB64FDEF2030232A0077FF3E /* LY_WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LY_WaveView.h; sourceTree = "<group>"; };
 		AB64FDF0203023310077FF3E /* LY_WaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LY_WaveView.m; sourceTree = "<group>"; };
@@ -756,6 +759,8 @@
 			children = (
 				AB96988E2004292500594F81 /* NearbyViewController.h */,
 				AB9698862004292300594F81 /* NearbyViewController.m */,
+				AB4EC106204A86FE0009FC27 /* MapViewController.h */,
+				AB4EC107204A86FE0009FC27 /* MapViewController.m */,
 			);
 			path = NearbyViewController;
 			sourceTree = "<group>";
@@ -1358,11 +1363,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-kayoulianmeng/Pods-kayoulianmeng-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/CLPlayer/CLPlayer/Resource/CLPlayer.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CLPlayer.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
@@ -1393,6 +1400,7 @@
 				AB9698202004285900594F81 /* AppDelegate.m in Sources */,
 				ABE5F8A3201E6B270089D6F2 /* LY_TableViewCell.m in Sources */,
 				ABABE7C02014CA4900087AEA /* LY_AFNetworking.m in Sources */,
+				AB4EC108204A86FE0009FC27 /* MapViewController.m in Sources */,
 				ABF9040B2030EA7F003A4735 /* LoginWithPasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

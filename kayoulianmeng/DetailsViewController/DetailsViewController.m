@@ -7,13 +7,12 @@
 //
 
 #import "DetailsViewController.h"
-#import <AVFoundation/AVFoundation.h>
+#import "CLPlayerView.h"
+
 
 @interface DetailsViewController ()
-@property (nonatomic,strong) AVPlayer *myPlayer;//播放器
-@property (nonatomic,strong) AVAsset *asset;
-@property (nonatomic,strong) AVPlayerItem *item;//播放单元
-@property (nonatomic,strong) AVPlayerLayer *playerLayer;//播放界面（layer）
+@property(nonatomic,weak) CLPlayerView *playerView;
+
 @end
 
 @implementation DetailsViewController
@@ -27,8 +26,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = NO;
-   [self simpleUIWebViewTest];
+    [self simpleUIWebViewTest];
 }
 
 - (void)simpleUIWebViewTest {
@@ -40,17 +40,29 @@
     }else if([self.type isEqualToString:@"video"]){
         NSLog(@"videoURL = %@",self.videoURL);
         NSURL *mediaURL = [NSURL URLWithString:self.videoURL];
-        self.asset = [AVAsset assetWithURL:mediaURL];
-        self.item = [AVPlayerItem playerItemWithAsset:self.asset];
         
-        [self.item addObserver:self forKeyPath:@"status" options:0 context:nil];
-        self.myPlayer = [AVPlayer playerWithPlayerItem:self.item];
-        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.myPlayer];
-        self.playerLayer.frame = CGRectMake(0, 64, Screen_Width, Screen_Width/16*9);
-        self.playerLayer.backgroundColor = [UIColor blackColor].CGColor;
-        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        [self.view.layer addSublayer:self.playerLayer];
-        [self.myPlayer play];
+        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 64, Screen_Width, Screen_Width/16*9)];
+        
+        self.playerView = playerView;
+        [self.view addSubview:self.playerView];
+        //全屏是否隐藏状态栏，默认一直不隐藏
+        self.playerView.fullStatusBarHiddenType = FullStatusBarHiddenFollowToolBar;
+        //转子颜色
+        self.playerView.strokeColor = [UIColor greenColor];
+        //工具条消失时间，默认10s
+        self.playerView.toolBarDisappearTime = 5;
+        //顶部工具条隐藏样式，默认不隐藏
+        self.playerView.topToolBarHiddenType = TopToolBarHiddenSmall;
+        //视频地址
+        self.playerView.url = mediaURL;
+        [self.playerView playVideo];
+        [self.playerView backButton:^(UIButton *button){
+            NSLog(@"返回按钮被点击");
+        }];
+        [self.playerView endPlay:^{
+            NSLog(@"播放完成");
+        }];
+
     }else{
         // 1.创建webview，并设置大小，"20"为状态栏高度
         UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, Screen_Width, Screen_Height-64)];

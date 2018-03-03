@@ -12,6 +12,7 @@
 #import "LogisticsViewController.h"
 #import "NearbyViewController.h"
 #import "MyViewController.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 
@@ -47,7 +48,10 @@
     //设置Bmob
     [Bmob registerWithAppKey:@"fc2b8f038ded90f95527e2bd39e63454"];
     
+    //设置高德Key
+    [AMapServices sharedServices].apiKey = @"卡友联盟-地图";
     
+    //设置环信
     EMOptions *options = [EMOptions optionsWithAppkey:@"1128180204115107#kayoulianmeng"];
     options.apnsCertName = nil;
     [[EMClient sharedClient] initializeSDKWithOptions:options];
@@ -57,7 +61,7 @@
         NSLog(@"初始化成功");
     }
     
-
+    
     
     self.window.rootViewController = rootNavigationController;
     [self.window makeKeyAndVisible];
@@ -92,6 +96,8 @@
 // 申请处理时间
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
+
+
 
 
 @end

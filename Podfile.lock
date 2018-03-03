@@ -14,6 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AMap3DMap (5.7.0):
+    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.4.3)
+  - AMapSearch (5.7.0):
+    - AMapFoundation (~> 1.4)
   - BmobSDK (2.2.8)
   - CLPlayer (1.2.0):
     - Masonry
@@ -30,6 +35,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AMap3DMap
+  - AMapFoundation
+  - AMapSearch
   - BmobSDK
   - CLPlayer (~> 1.2.0)
   - Hyphenate
@@ -40,6 +48,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMap3DMap: 97afc57b88628237d916991ac31795eb7bde3f63
+  AMapFoundation: 973682cfe60b92efd73a8ef8f1144fa0fa8e1296
+  AMapSearch: 314f75e9ce282b53dbf66455efa416c39f12b5b1
   BmobSDK: 8ee987736c9b766a688ea8e0274ce4748db2255e
   CLPlayer: 9a7dddf953a61bff0092b6be0340666ab6dc5b02
   Hyphenate: 1c8b0785d07261f1bc7162b7722b113110e1576d
@@ -50,6 +61,6 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
 
-PODFILE CHECKSUM: af76ceade7e3597bb2aa8dcf24216f9c21e1b540
+PODFILE CHECKSUM: dd179ecfcd4e0164902a8a03527f2cf68732a822
 
 COCOAPODS: 1.4.0

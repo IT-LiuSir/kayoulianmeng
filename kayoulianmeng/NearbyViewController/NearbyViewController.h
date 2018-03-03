@@ -6,7 +6,7 @@
 //  Copyright © 2018年 刘岩-MAC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h> 
 
 @interface NearbyViewController : UIViewController
 

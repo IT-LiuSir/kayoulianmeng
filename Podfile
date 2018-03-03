@@ -9,4 +9,7 @@ target 'kayoulianmeng' do
     pod 'CLPlayer', '~> 1.2.0'
     pod 'Hyphenate'
     pod 'BmobSDK'
+    pod 'AMap3DMap'
+    pod 'AMapFoundation'
+    pod 'AMapSearch'
 end
