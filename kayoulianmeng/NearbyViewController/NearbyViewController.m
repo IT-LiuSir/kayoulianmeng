@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
 //    [self initTableView];
     
     UIButton *mapButton = [[UIButton alloc] initWithFrame:CGRectMake(Screen_Width/8*3, Screen_Height/22*10, Screen_Width/4, Screen_Height/11)];
@@ -47,7 +48,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.title = @"附近服务";
+    self.navigationController.navigationBar.topItem.title = @"附近服务";
+    
 }
 
 #pragma mark - 创建UITableView

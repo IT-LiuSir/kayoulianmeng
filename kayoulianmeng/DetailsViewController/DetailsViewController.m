@@ -20,14 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
-//    [self simpleUIWebViewTest];
+
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.translucent = NO;//设置导航栏是否半透明，解决界面跳转出现黑色阴影问题
+//    self.navigationController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self simpleUIWebViewTest];
 }
 
@@ -41,7 +42,7 @@
         NSLog(@"videoURL = %@",self.videoURL);
         NSURL *mediaURL = [NSURL URLWithString:self.videoURL];
         
-        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 64, Screen_Width, Screen_Width/16*9)];
+        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Width/16*9)];
         
         self.playerView = playerView;
         [self.view addSubview:self.playerView];
@@ -65,7 +66,7 @@
 
     }else{
         // 1.创建webview，并设置大小，"20"为状态栏高度
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, Screen_Width, Screen_Height-64)];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-64)];
         // 2.创建URL
         NSURL *url = [NSURL URLWithString:_webURL];
         // 3.创建Request

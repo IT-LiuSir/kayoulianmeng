@@ -31,7 +31,7 @@
 @property(nonatomic,strong) UIView *subView;
 @property(nonatomic,strong) UIView *topView;
 @property(nonatomic,strong) UIImageView *topImage;
-@property(nonatomic,strong) CAGradientLayer *gradientLayer;
+@property(nonatomic,strong) CAGradientLayer *gradientLayer;//绘制顶部的渐变阴影
 @property(nonatomic,strong) DetailsViewController *detailsViewCtr;//跳转的详情界面
 @end
 
@@ -96,7 +96,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 #pragma mark - 获取数据
