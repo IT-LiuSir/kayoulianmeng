@@ -31,19 +31,19 @@
     NearbyViewController *nearbyVC = [[NearbyViewController alloc]init];
     MyViewController *myVC = [[MyViewController alloc]init];
     
-//    UINavigationController *homeNav = [[UINavigationController alloc]initWithRootViewController:homeVC];
-//    UINavigationController *forunmNav = [[UINavigationController alloc]initWithRootViewController:forumVC];
-//    UINavigationController *LogisticsNav = [[UINavigationController alloc]initWithRootViewController:LogisticsVC];
-//    UINavigationController *nearbyNav = [[UINavigationController alloc]initWithRootViewController:nearbyVC];
-//    UINavigationController *myNav = [[UINavigationController alloc]initWithRootViewController:myVC];
-    //将Navigation储存在数组中
-//    NSArray *array = @[homeNav,forunmNav,LogisticsNav,nearbyNav,myNav];
-    NSArray *array = @[homeVC,forumVC,LogisticsVC,nearbyVC,myVC];
+    UINavigationController *homeNav = [[UINavigationController alloc]initWithRootViewController:homeVC];
+    UINavigationController *forunmNav = [[UINavigationController alloc]initWithRootViewController:forumVC];
+    UINavigationController *LogisticsNav = [[UINavigationController alloc]initWithRootViewController:LogisticsVC];
+    UINavigationController *nearbyNav = [[UINavigationController alloc]initWithRootViewController:nearbyVC];
+    UINavigationController *myNav = [[UINavigationController alloc]initWithRootViewController:myVC];
+//    将Navigation储存在数组中
+    NSArray *array = @[homeNav,forunmNav,LogisticsNav,nearbyNav,myNav];
+//    NSArray *array = @[homeVC,forumVC,LogisticsVC,nearbyVC,myVC];
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     tabBarController.viewControllers=array;
     tabBarController.selectedIndex =0;
     
-    UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+//    UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
     
     //设置Bmob
     [Bmob registerWithAppKey:@"fc2b8f038ded90f95527e2bd39e63454"];
@@ -63,7 +63,7 @@
     
     
     
-    self.window.rootViewController = rootNavigationController;
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

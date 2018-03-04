@@ -20,14 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
+    self.hidesBottomBarWhenPushed = YES;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.translucent = NO;//设置导航栏是否半透明，解决界面跳转出现黑色阴影问题
-//    self.navigationController.hidesBottomBarWhenPushed = YES;
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self simpleUIWebViewTest];
 }
