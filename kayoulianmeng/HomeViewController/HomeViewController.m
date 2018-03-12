@@ -12,6 +12,7 @@
 //
 
 #import "HomeViewController.h"
+#import "AdvertiseViewController.h"
 #import "LY_AFNetworking.h"
 #import "SDCycleScrollView.h"
 #import "MJRefresh.h"
@@ -33,6 +34,7 @@
 @property(nonatomic,strong) UIImageView *topImage;
 @property(nonatomic,strong) CAGradientLayer *gradientLayer;//绘制顶部的渐变阴影
 @property(nonatomic,strong) DetailsViewController *detailsViewCtr;//跳转的详情界面
+@property(nonatomic,strong) AdvertiseViewController *adVc;//进入应用的广告详情界面
 @end
 
 @implementation HomeViewController
@@ -63,8 +65,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @" ";
     self.view.backgroundColor = [UIColor clearColor];
+    
+    
     
     [self ButtonWithTitle:@"新闻" image:@"news@3x.png" row:1 column:1];
     [self ButtonWithTitle:@"视频" image:@"video@3x.png" row:1 column:2];
@@ -96,7 +100,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToAd) name:@"pushtoad" object:nil];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+#pragma mark - 跳转到广告详情界面
+- (void)pushToAd {
+    
+    self.adVc = [[AdvertiseViewController alloc] init];
+    self.adVc.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:_adVc animated:YES];
+    
 }
 
 #pragma mark - 获取数据
@@ -324,12 +337,12 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
 
         if ((int)moveOffset <20) {
             self.gradientLayer.colors = @[(id)UIColorWithRGB(0, 0, 0, (20-moveOffset)/28).CGColor,(id)UIColorWithRGB(0, 0, 0, 0).CGColor];
-            
+
         }else{
             self.gradientLayer.colors = @[(id)UIColorWithRGB(0, 0, 0, 0).CGColor,(id)UIColorWithRGB(0, 0, 0, 0).CGColor];
             self.topImage.alpha = 1;
         }
-        
+
         if ((int)moveOffset <64) {
             self.topView.backgroundColor = UIColorWithRGB(0, 100, 255, moveOffset/75);
             self.topImage.alpha = moveOffset/64;
@@ -421,7 +434,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
 //点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
-    NSLog(@"点击图片%zd",index);
+//    NSLog(@"点击图片%zd",index);
     
     self.detailsViewCtr = [[DetailsViewController alloc] init];
     self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
@@ -432,7 +445,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
 //图片滚动回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index{
     
-    NSLog(@"图片滚动回调%zd",index);
+//    NSLog(@"图片滚动回调%zd",index);
     
 }
 
@@ -488,7 +501,7 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
     buttonImageView.layer.masksToBounds = YES;
     buttonLaber.frame = CGRectMake(labelX, labelY, labelW, labelH);
     buttonLaber.text = title;
-    buttonLaber.textAlignment=NSTextAlignmentCenter;
+    buttonLaber.textAlignment = NSTextAlignmentCenter;
     buttonLaber.font = [UIFont fontWithName:@"PingFang SC" size:kFontSize(8)];
     
     [button addSubview:buttonImageView];
@@ -531,9 +544,9 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
         case 14:{
             NSLog(@"14");
             self.detailsViewCtr = [[DetailsViewController alloc] init];
+            self.detailsViewCtr.webURL =@"https://nearby-api.360che.com";
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"附近商家";
-            self.detailsViewCtr.webURL =@"https://nearby-api.360che.com";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }
@@ -548,9 +561,9 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
         case 21:{
             NSLog(@"21");
             self.detailsViewCtr = [[DetailsViewController alloc] init];
+            self.detailsViewCtr.webURL = @"https://s.360che.com/Wapshop";
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"配件商城";
-            self.detailsViewCtr.webURL = @"https://s.360che.com/Wapshop";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
 
             break;
@@ -558,9 +571,9 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
         case 22:{
             NSLog(@"22");
             self.detailsViewCtr = [[DetailsViewController alloc] init];
+            self.detailsViewCtr.webURL = @"https://gche.360che.com/market/sale/list.aspx";
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"买挂车";
-            self.detailsViewCtr.webURL = @"https://gche.360che.com/market/sale/list.aspx";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
 
             break;
@@ -568,18 +581,18 @@ static const CGFloat MJDuration = 2.0;  //测试刷新用的等待时间，测�
         case 23:{
             NSLog(@"23");
             self.detailsViewCtr = [[DetailsViewController alloc] init];
+            self.detailsViewCtr.webURL = @"";
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"快运贷";
-            self.detailsViewCtr.webURL = @"";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }
         case 24:{
             NSLog(@"24");
             self.detailsViewCtr = [[DetailsViewController alloc] init];
+            self.detailsViewCtr.webURL = @"https://tao.m.360che.com";
             self.detailsViewCtr.view.backgroundColor = [UIColor whiteColor];
             self.detailsViewCtr.navigationItem.title = @"二手车";
-            self.detailsViewCtr.webURL = @"https://tao.m.360che.com";
             [self.navigationController pushViewController:_detailsViewCtr animated:YES];
             break;
         }
